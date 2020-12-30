@@ -3,10 +3,21 @@ export default function manageBand(state = {
 }, action) {
   switch (action.type) {
     case 'ADD_BAND':
-
-    return {name: state.name.concat(action.payload.text)}
-    
+      return {
+        ...state,
+        bands: [...state.bands, action.payload] 
+      }
     default:
       return state;
   }
 };
+
+export const addBand = name => {
+  return {
+    type: 'ADD_BAND',
+    payload: {
+      name
+    }
+  }
+}
+
